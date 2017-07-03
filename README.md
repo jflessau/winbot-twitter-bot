@@ -56,5 +56,5 @@ As required by <a href="https://github.com/Darkcast?tab=repositories">Darkcast</
 ### Why is this bot unfollowing users?
 Following to many users at a time can get your bot blocked. Because of that, it unfollows users with the <a href="https://en.wikipedia.org/wiki/FIFO">fifo-princliple</a>.
 
-### It’s kinda time consuming - what can I d about that?
+### It’s kinda time consuming - what can I do about that?
 Because of twitters limits, theres not much you can do about that. Let this bot run on a raspberry or arduino, controll it with <a href="https://en.wikipedia.org/wiki/Cron">cron</a> and wait for some prices :)

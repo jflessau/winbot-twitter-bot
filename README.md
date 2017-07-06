@@ -9,8 +9,7 @@ Switch to the directory and type<br><br>
 `$ python winbot.py`<br><br>
 into the terminal.
 
-## How to set it up
-### Connection with your account on twitter
+## Connection with Twitter
 First thing you need is an app on twitter. You can create it right here: https://apps.twitter.com/<br><br>
 After creating the app, you should get the <b>app_key</b> and the <b>app_secret</b>. To interact with your twitter-account you will have to create the <b>oauth_token</b> and the <b>oauth_token_secret</b>.<br><br>
 Follow the steps in the Application Manager to get these.

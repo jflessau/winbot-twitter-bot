@@ -22,7 +22,7 @@ twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 def win_things():
     print_settings()
     for i in range(0, tell_settings()['cycles']):
-        print 'start cycle: ' +str(i + 1)
+        print '\n\n\nstart cycle: ' +str(i + 1)
         fresh_tweets = search_for_tweets()
         filtered_tweets = filter_tweets(fresh_tweets)
         print 'found ' + str(len(fresh_tweets)) + ' tweets in this cycle'
@@ -149,7 +149,7 @@ def retweet(tweet):
         log_entry = str(date_time) + " | RT | " + str(tweet['id']) + " | " + tweet['user']['screen_name']
         add_line(log_entry, 'log.txt')
     except TwythonError as e:
-        print str(e) + '\n\n' + str(tweet['id'])
+        print 'FAILED to retweet: [tweet_id:' + str(tweet['id']) + ']'
 
 def follow_user(screen_name):
     follows = get_list('follows.txt')
@@ -158,16 +158,16 @@ def follow_user(screen_name):
         if screen_name == stored_screen_name:
             add == False
     if add == True:
-        unfollow_fifo()
+        unfollow_add = unfollow_fifo()
         try:
             twitter.create_friendship(screen_name=screen_name)
             add_line(screen_name, 'follows.txt')
             print 'followed ' + screen_name
         except TwythonError as e:
-            print str(e) + '\n' + 'screen_name'
-        return 1
+            print 'FAILED to follow ' + screen_name
+        return (unfollow_add + 1)
     else:
-        return 0
+        return unfollow_add
 
 def follow_author(tweet):
     followed_num = follow_user(tweet['user']['screen_name'])
@@ -199,7 +199,7 @@ def wait(counter):
 
 def unfollow_fifo():
     followed = get_list('follows.txt')
-    if (len(followed) > 4):
+    if (len(followed) > tell_settings()['max-follow']):
         last_one = followed[(0)]
         followed.pop(0)
         empty_file('follows.txt')
@@ -209,7 +209,10 @@ def unfollow_fifo():
             twitter.destroy_friendship(screen_name=last_one)
             print 'unfollowed: ' + last_one
         except:
-            print 'failed to unfollow ' + screen_name + '.'
+            print 'FAILED to unfollow ' + last_one
+        return 1
+    else:
+        return 0
 
 def empty_file(filename):
     open(filename, 'w').close()
@@ -223,7 +226,7 @@ def print_settings():
     print 'sleeps for ' + str(tell_settings()['sleep']) + ' seconds'
     print 'whenever bot interacted ' + str(tell_settings()['interaction_limit']) + ' times with twitter-api'
     print 'follows max. ' + str(tell_settings()['max_mentioned_follow'])  + ' users, who were mentioned in a tweet'
-    print '------------------------------------------------------------\n\n\n'
+    print '------------------------------------------------------------'
 
 def print_end():
     print '\n\n\n'
@@ -240,7 +243,7 @@ def like_this(tweet):
         twitter.create_favorite(id=tweet['id'])
         print 'liked tweet: [tweet_id:' + str(tweet['id']) + ']'
     except TwythonError as e:
-        print e
+        print 'FAILED to like tweet: [tweet_id:' + str(tweet['id']) + ']'
 
 def print_line(breaks):
     print '------------------------------------------------------------'
@@ -255,7 +258,7 @@ def print_line(breaks):
 
 # time (in seconds) to wait after reaching an api-limit (min. 900s)
 def tell_settings():
-    settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4,
+    settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
                 'max_mentioned_follow' : 3,
                 'search_query' : 'rt2win OR gewinnspiel OR giveaway -filter:retweets AND -filter:replies'}
     return settings
@@ -269,3 +272,4 @@ def tell_settings():
 
 # start winning
 win_things()
+

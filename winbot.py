@@ -102,14 +102,15 @@ def tweet_has_string(tweet, str):
 
 def get_intimate_with(tweet_list):
     limit_counter = len(tweet_list)
-    limit_counter = wait(limit_counter)
     for tweet in tweet_list:
+        print '{'
         retweet(tweet)
         follow_author(tweet)
         limit_counter = limit_counter + 3
         followed_num = follow_mentioned(tweet)
         limit_counter += (2 * followed_num)
         limit_counter = wait(limit_counter)
+        print '}\n\n'
 
 def find_screen_names_in_text(text, max_users):
     result = []
@@ -136,6 +137,7 @@ def find_screen_names_in_text(text, max_users):
 def retweet(tweet):
     try:
         twitter.retweet(id=tweet['id'])
+        print 'retweeted: [tweet_id:' + str(tweet['id']) + ']'
         date_time = (time.strftime("%d-%m-%Y") + " | " + time.strftime("%H:%M:%S"))
         log_entry = str(date_time) + " | RT | " + str(tweet['id']) + " | " + tweet['user']['screen_name']
         add_line(log_entry, 'log.txt')
@@ -153,6 +155,7 @@ def follow_user(screen_name):
         try:
             twitter.create_friendship(screen_name=screen_name)
             add_line(screen_name, 'follows.txt')
+            print 'followed ' + screen_name
         except TwythonError as e:
             print str(e) + '\n' + 'screen_name'
         return 1
@@ -181,6 +184,7 @@ def follow_mentioned(tweet):
 
 def wait(counter):
     if counter > tell_settings()['interaction_limit']:
+        print '---sleep for ' + str(tell_settings()['sleep'])
         time.sleep(tell_settings()['sleep'])
         return 0
     else:
@@ -188,7 +192,7 @@ def wait(counter):
 
 def unfollow_fifo():
     followed = get_list('follows.txt')
-    if (len(followed) > 2499):
+    if (len(followed) > 4):
         last_one = followed[(0)]
         followed.pop(0)
         empty_file('follows.txt')
@@ -196,6 +200,7 @@ def unfollow_fifo():
             add_line(line, 'follows.txt')
         try:
             twitter.destroy_friendship(screen_name=last_one)
+            print 'unfollowed: ' + last_one
         except:
             print 'failed to unfollow ' + screen_name + '.'
 
@@ -211,7 +216,7 @@ def print_settings():
     print 'sleeps for ' + str(tell_settings()['sleep']) + ' seconds'
     print 'whenever bot interacted ' + str(tell_settings()['interaction_limit']) + ' times with twitter-api'
     print 'follows max. ' + str(tell_settings()['max_mentioned_follow'])  + ' users, who were mentioned in a tweet'
-    print '------------------------------------------------------------\nErrors/Warnings:'
+    print '------------------------------------------------------------\n\n\n'
 
 def print_end():
     print '\n\n\n'
@@ -219,11 +224,14 @@ def print_end():
 
 
 
+
+
+
 '''SETTINGS'''
 
 # time (in seconds) to wait after reaching an api-limit (min. 900s)
 def tell_settings():
-    settings = {'search_for' : 20, 'cycles': 2, 'sleep' : 180, 'interaction_limit' : 4,
+    settings = {'search_for' : 20, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4,
                 'max_mentioned_follow' : 3,
                 'search_query' : 'rt2win OR gewinnspiel -filter:retweets AND -filter:replies'}
     return settings
@@ -237,3 +245,4 @@ def tell_settings():
 
 # start winning
 win_things()
+

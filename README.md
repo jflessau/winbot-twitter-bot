@@ -40,6 +40,9 @@ Unfollowing clearly costs time, but it is essential for this bot to run without 
 ### max_mentioned_follow
 Some twitter contests want you to follow not only one user to be part of it. They mention other users you need to follow in order to participate. Because of that, this bot finds metioned users in tweets and follows them. It’s unlikely that you need to follow more than two or three users for a single contest, therefore you can set the limit for following mentioned users (per tweet) with <b>max_mentioned_follow</b>. If set to zero, no mentioned user will be followed.
 
+###search_query
+This string is the actual search query. You can manipulate it and explore, what string works best for you. You can find a guide for effective querys right <a href="https://dev.twitter.com/rest/public/search">here</a>.
+
 ## Files
 ### log.txt
 All retweets are logged here. Just so that you can keep an eye on the progress. Also the bot compares the results of a search with all tweets from this log-file. Because of that, this bot won't try to retweet a tweet twice, which saves a lot of time.

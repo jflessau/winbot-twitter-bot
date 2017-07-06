@@ -34,8 +34,12 @@ Because Twitter does not provide us with endless data, there are some limits for
 Every interaction wit twitter is counted. Whenever the <i>interaction_limit</i> is reached, the bot will pause in order to prevent getting blocked by twitter because of exceeding limits.<br>
 Play with this value, if you're feeling lucky. Reading the <a href="https://support.twitter.com/articles/355430">rules for twitters limits</a> could help though.
 
+#### max-follow
+This value represents the max. amount of users this bot will follow at a time. If reached, the bot will unfollow the user you followed for the longest time. The default for this value is 2000. (Twitter will block users, who follow more than about 4.000 users.)
+Unfollowing clearly costs time, but it is essential for this bot to run without being blocked by twitter.
+
 #### max_mentioned_follow
-Some twitter contests want you to follow not only one user to be part of it. They mention other users you need to follow in order to participate. Because of that, this bot finds metioned users in tweets and follows them. It’s unlikely that you need to follow more than two or three users for a single contest, therefore you can set the limit for following mentioned users (per tweet) with <b>max_mentioned_follow</b>. If set to zero, no mentioned user will be followed.  
+Some twitter contests want you to follow not only one user to be part of it. They mention other users you need to follow in order to participate. Because of that, this bot finds metioned users in tweets and follows them. It’s unlikely that you need to follow more than two or three users for a single contest, therefore you can set the limit for following mentioned users (per tweet) with <b>max_mentioned_follow</b>. If set to zero, no mentioned user will be followed. 
 
 ## Files
 #### log.txt
@@ -61,3 +65,4 @@ Following to many users at a time can get your bot blocked. Because of that, it 
 
 ### It’s kinda time consuming - what can I do about that?
 Because of twitters limits, theres not much you can do about that. Let this bot run on a raspberry or arduino, controll it with <a href="https://en.wikipedia.org/wiki/Cron">cron</a> and wait for some prices :)
+

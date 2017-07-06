@@ -1,6 +1,6 @@
 import time
 import random
-import sys 
+import sys
 
 
 
@@ -22,8 +22,12 @@ twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 def win_things():
     print_settings()
     for i in range(0, tell_settings()['cycles']):
+        print 'start cycle: ' +str(i + 1)
         fresh_tweets = search_for_tweets()
         filtered_tweets = filter_tweets(fresh_tweets)
+        print 'found ' + str(len(fresh_tweets)) + ' tweets in this cycle'
+        print str(len(filtered_tweets)) + ' tweets left after filtering'
+        print_line(3)
         get_intimate_with(filtered_tweets)
     print_end()
 
@@ -109,6 +113,9 @@ def get_intimate_with(tweet_list):
         limit_counter = limit_counter + 3
         followed_num = follow_mentioned(tweet)
         limit_counter += (2 * followed_num)
+        if should_we_like_it(tweet):
+            limit_counter = limit_counter + 1
+            like_this(tweet)
         limit_counter = wait(limit_counter)
         print '}\n\n'
 
@@ -208,7 +215,7 @@ def empty_file(filename):
     open(filename, 'w').close()
 
 def print_settings():
-    print '------------------------------------------------------------'
+    print_line(0)
     print '--------------------------WinBot----------------------------'
     print '************************************************************'
     print 'SETTINGS:\nSearch for ' + str(tell_settings()['search_for']) + ' tweets in each cycle'
@@ -222,6 +229,23 @@ def print_end():
     print '\n\n\n'
     print '------------------------------------------------------------\nDONE'
 
+def should_we_like_it(tweet):
+    if (tweet_has_string(tweet, 'like') or tweet_has_string(tweet, 'liking')):
+        return True
+    else:
+        return False;
+
+def like_this(tweet):
+    try:
+        twitter.create_favorite(id=tweet['id'])
+        print 'liked tweet: [tweet_id:' + str(tweet['id']) + ']'
+    except TwythonError as e:
+        print e
+
+def print_line(breaks):
+    print '------------------------------------------------------------'
+    for i in range(0, breaks):
+        print '\n'
 
 
 
@@ -231,9 +255,9 @@ def print_end():
 
 # time (in seconds) to wait after reaching an api-limit (min. 900s)
 def tell_settings():
-    settings = {'search_for' : 20, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4,
+    settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4,
                 'max_mentioned_follow' : 3,
-                'search_query' : 'rt2win OR gewinnspiel -filter:retweets AND -filter:replies'}
+                'search_query' : 'rt2win OR gewinnspiel OR giveaway -filter:retweets AND -filter:replies'}
     return settings
 
 
@@ -245,4 +269,3 @@ def tell_settings():
 
 # start winning
 win_things()
-

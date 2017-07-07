@@ -54,10 +54,11 @@ This is where every user you followed is saved. It is elementary for the unfollo
 Here you can manually save names of users (seperated by linebreak) you don't want to interact with. Unfortunately it's not possible to teach a bot to avoid interaction with blocked users. On the other hand the blacklist can be copied and used with multible other bots.
 The blacklist is useful, because every unwanted retweet costs time.<br><br> In the new folder
 <a href="https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist">filled-blacklist</a>
-you can find an alternative blacklist.txt with the most annoying BotSpotterBots in it. I'll try to keep it up to date. If you got new names, please let me know.
+you can find an alternative blacklisted-users.txt with the most annoying BotSpotterBots in it. I'll try to keep it up to date. If you got new names, please let me know.
 
 ### blacklisted-strings.txt
-As required by <a href="https://github.com/Darkcast?tab=repositories">Darkcast</a> you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.
+As required by <a href="https://github.com/Darkcast?tab=repositories">Darkcast</a> you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.<br>
+I’ve added a filled version in the <a href="https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist">filled-blacklist</a>-folder.
 
 
 ## Additional info

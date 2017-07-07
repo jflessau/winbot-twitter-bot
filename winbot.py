@@ -260,7 +260,7 @@ def print_line(breaks):
 def tell_settings():
     settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
                 'max_mentioned_follow' : 3,
-                'search_query' : 'rt2win OR gewinnspiel OR giveaway -filter:retweets AND -filter:replies'}
+                'search_query' : 'rt2win OR retweet to win OR Gewinnspiel OR Verlosung -filter:retweets AND -filter:replies'}
     return settings
 
 

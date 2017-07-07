@@ -162,9 +162,9 @@ def follow_user(screen_name):
         try:
             twitter.create_friendship(screen_name=screen_name)
             add_line(screen_name, 'follows.txt')
-            print 'followed ' + screen_name
+            print 'followed ' + screen_name.encode('ascii', 'ignore')
         except TwythonError as e:
-            print 'FAILED to follow ' + screen_name
+            print 'FAILED to follow ' + screen_name.encode('ascii', 'ignore')
         return (unfollow_add + 1)
     else:
         return unfollow_add
@@ -207,9 +207,9 @@ def unfollow_fifo():
             add_line(line, 'follows.txt')
         try:
             twitter.destroy_friendship(screen_name=last_one)
-            print 'unfollowed: ' + last_one
+            print 'unfollowed: ' + last_one.encode('ascii', 'ignore')
         except:
-            print 'FAILED to unfollow ' + last_one
+            print 'FAILED to unfollow ' + last_one.encode('ascii', 'ignore')
         return 1
     else:
         return 0
@@ -272,4 +272,3 @@ def tell_settings():
 
 # start winning
 win_things()
-

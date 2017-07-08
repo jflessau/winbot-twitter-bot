@@ -6,10 +6,10 @@ import sys
 
 # twitter api connection
 from twython import Twython, TwythonError
-app_key = "app_key"
-app_secret = "app_secret"
-oauth_token = "oauth_token"
-oauth_token_secret = "oauth_token_secret"
+app_key = "<app_key>>"
+app_secret = "<app_secret>"
+oauth_token = "<oauth_token>"
+oauth_token_secret = "<oauth_token_secret>"
 twitter = Twython(app_key, app_secret, oauth_token, oauth_token_secret)
 
 
@@ -35,7 +35,7 @@ def get_list(filename):
     result = [];
     file = open(filename, 'r')
     for line in file:
-        result.append(line.replace('\n', ''))
+        result.append(line.rstrip('\n'))
     return result
 
 def get_past_retweets():
@@ -68,7 +68,7 @@ def blacklisted_users_filter(tweet_list):
         add = True
         for screen_name in blacklisted_users:
             if tweet['user']['screen_name'] == screen_name:
-                add == False
+                add = False
         if add == True:
             result.append(tweet)
     return result

@@ -256,7 +256,6 @@ def print_line(breaks):
 
 '''SETTINGS'''
 
-# time (in seconds) to wait after reaching an api-limit (min. 900s)
 def tell_settings():
     settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
                 'max_mentioned_follow' : 3,

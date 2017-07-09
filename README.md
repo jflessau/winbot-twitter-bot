@@ -17,7 +17,12 @@ Now open winbot.py in your favorite editor and copy-paste the keys into it.
 
 ## Settings
 You can leave everything as it is, or tweak some settings to make this bot fit your needs.<br>
-The settings are stored in the `tell_settings`-function.<br>Here’s what can be chenged and why/when it could be smart to change something:<br>
+The settings are stored in the `tell_settings`-function:<br>
+```def tell_settings():
+    settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
+                'max_mentioned_follow' : 3,
+                'search_query' : 'rt2win OR retweet to win OR Gewinnspiel OR Verlosung -filter:retweets AND -filter:replies'}
+    return settings```
 
 ### search_for
 This value defines for how many tweets the bot will search for in one cycle. Twitters API provides at max. 150 tweets at a time when searching with a certain query. Because we filter for already retweetet tweets, blacklisted users/strings, retweets and replies, we won’t get as many tweets to retweet as we searched for. But that’s okay, because this bot works in cycles and searches for tweets over and over again, as often as you wish. Choose how often the bot will repeat the search-and-retweet-process by changing the amount of <b>cycles</b>.

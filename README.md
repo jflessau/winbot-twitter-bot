@@ -39,7 +39,7 @@ Because Twitter does not provide us with endless data, there are some limits for
 Every interaction wit twitter is counted. Whenever the <i>interaction_limit</i> is reached, the bot will pause in order to prevent getting blocked by twitter because of exceeding limits.<br>
 Play with this value, if you're feeling lucky. Reading the <a href="https://support.twitter.com/articles/355430">rules for twitters limits</a> could help, though.
 
-### max-follow
+### max_follow
 This value represents the max. amount of users this bot will follow at a time. If reached, the bot will unfollow the user you followed for the longest time. The default for this value is 2000. (Twitter will block users, who follow more than about 4.000 users.)
 Unfollowing clearly costs time, but it is essential for this bot to run on the long term without being blocked by twitter.
 

@@ -63,7 +63,7 @@ The blacklist is useful, because every unwanted retweet costs time.
 
 In the new folder
 [filled-blacklist](https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist)
-you can find an alternative blacklisted-users.txt with the most annoying BotSpotterBots in it. I'll try to keep it up to date. If you got new names, please let me know.
+you can find an alternative blacklisted-users.txt with the most annoying BotSpotterBots in it. I'll try to keep it up to date.
 
 ### blacklisted-strings.txt
 As required by [Darkcast](https://github.com/Darkcast?tab=repositories) you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.  

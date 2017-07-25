@@ -5,19 +5,20 @@ Make sure you have
 and [Twython](https://twython.readthedocs.io/en/latest/usage/install.html) installed on your machine.
 
 ## Run it
-Switch to the directory and type<br><br>
-`$ python winbot.py`<br><br>
+Switch to the directory and type  
+`$ python winbot.py`  
 into the terminal.
 
 ## Connection with Twitter
 First thing you need is an app on twitter. You can create it right here: [https://apps.twitter.com/](https://apps.twitter.com/)    
-After creating the app, you should get the **app_key** and the **app_secret**. To interact with your twitter-account you will have to create the **oauth_token** and the **oauth_token_secret**.<br><br>
+After creating the app, you should get the **app_key** and the **app_secret**. To interact with your twitter-account you will have to create the **oauth_token** and the **oauth_token_secret**.  
+
 Follow the steps in the Application Manager to get these.
 Now open winbot.py in your favorite editor and copy-paste the keys into it.
 
 ## Settings
-You can leave everything as it is, or tweak some settings to make this bot fit your needs.<br>
-The settings are stored in the `tell_settings`-function:<br>
+You can leave everything as it is, or tweak some settings to make this bot fit your needs.  
+The settings are stored in the `tell_settings`-function:
 ``` python
 def tell_settings():
     settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
@@ -36,7 +37,7 @@ In one cycle, the bot will searches for tweets to retweet, then retweets these t
 Because Twitter does not provide us with endless data, there are some limits for interactions through twitters api. About 150-180 Interactions in 15 minutes (900seconds) are allowed. The value of **sleep** represents the amount of seconds the bot will wait, every time the **interaction_limit** is reached.
 
 ### interaction_limit
-Every interaction wit twitter is counted. Whenever the <i>interaction_limit</i> is reached, the bot will pause in order to prevent getting blocked by twitter because of exceeding limits.<br>
+Every interaction wit twitter is counted. Whenever the *interaction_limit* is reached, the bot will pause in order to prevent getting blocked by twitter because of exceeding limits.  
 Play with this value, if you're feeling lucky. Reading the [rules for twitters limits](https://support.twitter.com/articles/355430) could help, though.
 
 ### max_follow
@@ -58,13 +59,14 @@ This is where every user you followed is saved. It is elementary for the unfollo
 
 ### blacklisted-users.txt
 Here you can manually save names of users (seperated by linebreak) you don't want to interact with. Unfortunately it's not possible to teach a bot to avoid interaction with blocked users. On the other hand the blacklist can be copied and used with multible other bots.
-The blacklist is useful, because every unwanted retweet costs time.<br>
+The blacklist is useful, because every unwanted retweet costs time.  
+
 In the new folder
 [filled-blacklist](https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist)
 you can find an alternative blacklisted-users.txt with the most annoying BotSpotterBots in it. I'll try to keep it up to date. If you got new names, please let me know.
 
 ### blacklisted-strings.txt
-As required by [Darkcast](https://github.com/Darkcast?tab=repositories) you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.<br>
+As required by [Darkcast](https://github.com/Darkcast?tab=repositories) you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.  
 I’ve added a filled version in the [filled-blacklist-folder](https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist).
 
 

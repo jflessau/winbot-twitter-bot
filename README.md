@@ -21,9 +21,14 @@ You can leave everything as it is, or tweak some settings to make this bot fit y
 The settings are stored in the `tell_settings`-function:
 ``` python
 def tell_settings():
-    settings = {'search_for' : 120, 'cycles': 2, 'sleep' : 135, 'interaction_limit' : 4, 'max-follow' : 2000,
+    settings = {'search_for' : 120, 
+                'cycles': 2,
+                'sleep' : 135,
+                'interaction_limit' : 4,
+                'max-follow' : 2000,
                 'max_mentioned_follow' : 3,
-                'search_query' : 'rt2win OR retweet to win -filter:retweets AND -filter:replies'}
+                'search_query' : 'rt2win OR retweet to win -filter:retweets AND -filter:replies'
+    }
     return settings
 ```
 

@@ -74,7 +74,7 @@ you can find an alternative blacklisted-users.txt with the most annoying BotSpot
 In case you got some more names, don’t hesitate to contribute them!
 
 ### blacklisted-strings.txt
-As required by [Darkcast](https://github.com/Darkcast?tab=repositories) you can now save strings (e.g. hashtags) in this file (seperated by linebreak). The bot will ignore tweets with those strings.  
+As required by [Darkcast](https://github.com/Darkcast?tab=repositories) you can now save strings (e.g. hashtags) in this file – seperated by linebreak. The bot will ignore tweets with those strings.  
 I’ve added a filled version in the [filled-blacklist-folder](https://github.com/jflessau/winbot-twitter-bot/tree/master/filled-blacklist).
 
 
@@ -82,7 +82,7 @@ I’ve added a filled version in the [filled-blacklist-folder](https://github.co
 ## Additional info
 
 ### Why is this bot unfollowing users?
-Following to many users at a time can get your bot blocked. Because of that, it also unfollows users ([fifo-princliple](https://en.wikipedia.org/wiki/FIFO)).
+Following too many users at a time can get your bot blocked. Because of that, it also unfollows users ([fifo-princliple](https://en.wikipedia.org/wiki/FIFO)).
 
 ### It’s kinda time consuming - what can I do about that?
-Because of twitters limits, theres not much you can do about that. Let this bot run on a raspberry or arduino, control it with [cron](https://en.wikipedia.org/wiki/Cron) and wait for some prices :)
+Theres not much you can do about that. Let this bot run on a raspberry or arduino, control it with [cron](https://en.wikipedia.org/wiki/Cron) and wait for some prices :)

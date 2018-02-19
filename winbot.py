@@ -271,7 +271,7 @@ def print_line(breaks):
 def tell_settings():
     settings = {
         'search_for' : 10,
-        'cycles': 2, 'sleep' : 135,
+        'cycles': 20, 'sleep' : 135,
         'interaction_limit' : 4,
         'max-follow' : 2000,
         'max_mentioned_follow' : 3,

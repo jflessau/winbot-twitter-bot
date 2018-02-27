@@ -229,7 +229,7 @@ def print_settings():
     print("amount of cycles: " + str(tell_settings()["cycles"]))
     print("sleeps for " + str(tell_settings()["sleep"]) + " seconds")
     print("whenever bot interacted " + str(tell_settings()["interaction_limit"]) + " times with twitter-api")
-    print "follows max. " + str(tell_settings()["max_mentioned_follow"])  + " users, who were mentioned in a tweet")
+    print ("follows max. " + str(tell_settings()["max_mentioned_follow"])  + " users, who were mentioned in a tweet")
     print("------------------------------------------------------------")
 
 def print_end():

@@ -203,7 +203,7 @@ def wait(counter):
 
 def unfollow_fifo():
     followed = get_list("follows.txt")
-    if (len(followed) > tell_settings()["max-follow"]):
+    if (len(followed) > tell_settings()["max_follow"]):
         last_one = followed[(0)]
         followed.pop(0)
         empty_file("follows.txt")
@@ -269,12 +269,12 @@ def print_line(breaks):
 
 def tell_settings():
     settings = {
-        "search_for" : 80,
-        "cycles": 120, "sleep" : 135,
+        "search_for" : 40,
+        "cycles": 120, "sleep" : 144,
         "interaction_limit" : 4,
-        "max-follow" : 2000,
+        "max_follow" : 2000,
         "max_mentioned_follow" : 3,
-        "search_query" : "rt2win OR retweet to win OR Gewinnspiel OR Verlosung -filter:retweets AND -filter:replies"
+        "search_query" : "rt2win OR retweet to win -filter:retweets AND -filter:replies"
     }
     return settings
 

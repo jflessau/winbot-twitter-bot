@@ -113,8 +113,10 @@ def get_intimate_with(tweet_list):
     for tweet in tweet_list:
         print("{")
         retweet(tweet)
-        follow_author(tweet)
-        limit_counter = limit_counter + 3
+        limit_counter = limit_counter + 1
+        if (tweet_has_string(tweet, 'follow')):
+            follow_author(tweet)
+            limit_counter = limit_counter + 2
         followed_num = follow_mentioned(tweet)
         limit_counter += (2 * followed_num)
         if should_we_like_it(tweet):

@@ -119,7 +119,7 @@ def get_intimate_with(tweet_list):
             limit_counter = limit_counter + 2
         followed_num = follow_mentioned(tweet)
         limit_counter += (2 * followed_num)
-        if should_we_like_it(tweet):
+        if should_we_like(tweet):
             limit_counter = limit_counter + 1
             like_this(tweet)
         limit_counter = wait(limit_counter)
@@ -168,7 +168,7 @@ def follow_user(screen_name):
         try:
             twitter.create_friendship(screen_name=screen_name)
             add_line(screen_name, "follows.txt")
-            print("followed " + screen_name.encode("ascii", "ignore"))
+            print("followed " + screen_name)
         except TwythonError as e:
             print("FAILED to follow " + screen_name.encode("ascii", "ignore"))
         return (unfollow_add + 1)
@@ -176,8 +176,7 @@ def follow_user(screen_name):
         return unfollow_add
 
 def follow_author(tweet):
-    followed_num = follow_user(tweet["user"]["screen_name"])
-    return followed_num
+    follow_user(tweet["user"]["screen_name"])
 
 def add_line(str, filename):
     file = open(filename, "r+")
@@ -238,7 +237,7 @@ def print_end():
     print("\n\n\n")
     print("------------------------------------------------------------\nDONE")
 
-def should_we_like_it(tweet):
+def should_we_like(tweet):
     if (tweet_has_string(tweet, "like") or tweet_has_string(tweet, "liking")):
         return True
     else:

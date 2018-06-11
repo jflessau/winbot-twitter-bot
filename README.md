@@ -60,4 +60,4 @@ Theres not much you can do about that. Let this bot run on a raspberry or arduin
 
 ## Donate
 Did you win cool stuff? Feel free to throw some cash for a beer into my direction:  
-[Donate](paypal.me/jflessau)
+[Donate](https://paypal.me/jflessau)

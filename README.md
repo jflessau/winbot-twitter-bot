@@ -58,6 +58,7 @@ Following too many users at a time can get your bot blocked. Because of that, it
 ### It’s kinda time consuming - what can I do about that?
 Theres not much you can do about that. Let this bot run on a raspberry or arduino, control it with [cron](https://en.wikipedia.org/wiki/Cron) and wait for some prices :)
 
+
 ## Donate
-Did you win cool stuff? Feel free to throw some cash for a beer into my direction:  
+Did you win cool stuff? Feel free to throw some cash for a beer in my direction:  
 [Donate](https://paypal.me/jflessau)
